@@ -26,6 +26,6 @@ EXPOSE 8080
 
 COPY files/exec.sh /bin/
 
-RUN chmod a+x /bin/exec.sh
+RUN chmod 755 /bin/exec.sh
 
 CMD /bin/exec.sh
