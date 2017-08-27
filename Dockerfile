@@ -24,6 +24,8 @@ VOLUME /data
 
 EXPOSE 8080
 
-ADD files/exec.sh /bin/
+COPY files/exec.sh /bin/
+
+RUN chmod a+x /bin/exec.sh
 
 CMD /bin/exec.sh
