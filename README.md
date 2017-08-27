@@ -1,12 +1,13 @@
-# paperinik/rpi-jenkins
+# Jenkins
 
-![docker_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/docker_139x115.png)![docker_fauria_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/docker_paperinik_120x120.png)
+![docker_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/files/docker.png)![docker_jenkins_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/files/logo-jenkins.png)![docker_paperinik_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/files/docker_paperinik_120x120.png)
 
-This Docker container implements a vsftpd server, with the following features:
+This Docker container implements a Jenkins on Raspberry pi.
+Only tested on Raspberry Pi 2
 
- * Raspbian base image.
+ * Raspbian base image: [resin/rpi-raspbian](https://hub.docker.com/r/resin/rpi-raspbian/)
  * jenkins 2.72
-
+ 
 ### Installation from [Docker registry hub](https://registry.hub.docker.com/u/paperinik/rpi-jenkins/).
 
 You can download the image with the following command:
@@ -14,6 +15,11 @@ You can download the image with the following command:
 ```bash
 docker pull paperinik/rpi-jenkins
 ```
+
+# How to use this image
+
+Use cases
+
 Exposed ports and volumes
 ----
 
@@ -31,10 +37,10 @@ Use cases
 2) Create a container with a binded data directory:
 
 ```bash
-docker run -d -p 8080:8080 -v /media/usbraid/docker/jenkins:/data --name jenkins paperinik/rpi-jenkins
+docker run -d --name jenkins -p 9402:8080 -v /media/usbraid/docker/jenkins:/data paperinik/rpi-jenkins
 ```
 
 3) Start jenkins container:
 ```bash
-./start.sh
+./run.sh
 ```
