@@ -8,7 +8,7 @@ FROM paperinik/rpi-java8:latest
 LABEL version latest
 LABEL description Jenkins Container
 
-ENV VERSION 2.72
+ENV VERSION 2.176
 
 RUN apt-get clean && apt-get update \
     && apt-get install -y wget \
