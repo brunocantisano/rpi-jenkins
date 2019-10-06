@@ -1,6 +1,6 @@
 .PHONY: default build remove rebuild save load tag push publish pull run test
 
-DOCKER_IMAGE_VERSION=2.176
+DOCKER_IMAGE_VERSION=2.190.1
 IMAGE_NAME=rpi-jenkins
 OWNER=paperinik
 PORT=9413
