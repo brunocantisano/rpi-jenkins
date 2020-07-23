@@ -1,1 +1,0 @@
-docker run -d --name jenkins -p 9402:8080 -v /media/usbraid/docker/jenkins:/data paperinik/rpi-jenkins

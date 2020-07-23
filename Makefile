@@ -1,7 +1,8 @@
-.PHONY: default build remove rebuild save load tag push publish pull run test
+.PHONY: default build remove rebuild save load tag push publish pull run stop copy key plugins
 
-DOCKER_IMAGE_VERSION=2.190.1
+DOCKER_IMAGE_VERSION=2.248
 IMAGE_NAME=rpi-jenkins
+CONTAINER_PORT=9402
 OWNER=paperinik
 PORT=9413
 NEXUS_REPO=$(OWNER):$(PORT)
@@ -50,11 +51,16 @@ pull:
 	docker pull $(NEXUS_REPO)/$(TAG)
 
 run:
-	$(eval ID := $(shell docker run -d ${NEXUS_REPO}/${TAG}))
-	$(eval IP := $(shell docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${ID}))
-	@echo "Running ${ID} @ http://${IP}"
-	@docker attach ${ID}
-	@docker kill ${ID}
+	docker run -d  --name ${IMAGE_NAME} -p ${CONTAINER_PORT}:8080 -v ~/jenkins/data:/data ${NEXUS_REPO}/${TAG}
+stop:
+	docker stop ${IMAGE_NAME} && docker rm ${IMAGE_NAME}
 
-test:
-	docker run --rm $(NEXUS_REPO)/$(TAG) /bin/echo "Success."
+copy:
+	docker cp ${IMAGE_NAME}:/data ~/jenkins
+	sudo chown -R nobody:nogroup ~/jenkins
+
+key:
+	docker exec -i rpi-jenkins cat /data/secrets/initialAdminPassword
+
+plugins:
+	docker exec -it echo "<?xml version='1.1' encoding='UTF-8'?><sites><site><id>default</id><url>http://updates.jenkins.io/update-center.json</url></site></sites>" > hudson.model.UpdateCenter.xml
