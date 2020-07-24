@@ -1,4 +1,4 @@
-.PHONY: default build remove rebuild save load tag push publish pull run stop copy key plugins
+.PHONY: default build remove rebuild save load tag push publish pull run stop copy key plugins volume
 
 DOCKER_IMAGE_VERSION=2.248
 IMAGE_NAME=rpi-jenkins
@@ -51,16 +51,21 @@ pull:
 	docker pull $(NEXUS_REPO)/$(TAG)
 
 run:
-	docker run -d  --name ${IMAGE_NAME} -p ${CONTAINER_PORT}:8080 -v ~/jenkins/data:/data ${NEXUS_REPO}/${TAG}
+	docker run -d  --name ${IMAGE_NAME} -p ${CONTAINER_PORT}:8080 -v `pwd`/jenkins_data:/data ${NEXUS_REPO}/${TAG}
+
 stop:
 	docker stop ${IMAGE_NAME} && docker rm ${IMAGE_NAME}
 
 copy:
-	docker cp ${IMAGE_NAME}:/data ~/jenkins
-	sudo chown -R nobody:nogroup ~/jenkins
+	docker cp ${IMAGE_NAME}:/data/* `pwd`/jenkins_data
+	sudo chown -R nobody:nogroup `pwd`/jenkins_data
 
 key:
-	docker exec -i rpi-jenkins cat /data/secrets/initialAdminPassword
+	docker exec -i ${IMAGE_NAME} cat /data/secrets/initialAdminPassword
 
 plugins:
-	docker exec -it echo "<?xml version='1.1' encoding='UTF-8'?><sites><site><id>default</id><url>http://updates.jenkins.io/update-center.json</url></site></sites>" > hudson.model.UpdateCenter.xml
+	docker cp ./hudson.model.UpdateCenter.xml ${IMAGE_NAME}:/data/hudson.model.UpdateCenter.xml
+
+volume:
+	docker volume create jenkins_data
+

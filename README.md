@@ -34,7 +34,22 @@ Use cases
 make build
 ```
 
-2) Start jenkins container:
+2) Create a volume:
+```bash
+make volume
+```
+
+3) Start jenkins container:
 ```bash
 make run
+```
+
+4) Change url to download plugins:
+``bash
+make plugins
+```
+
+5) Discover the admin password:
+```bash
+make key
 ```
