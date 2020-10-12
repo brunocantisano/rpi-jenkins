@@ -1,6 +1,6 @@
 .PHONY: default build remove rebuild save load tag push publish pull run stop copy key plugins volume
 
-DOCKER_IMAGE_VERSION=2.248
+DOCKER_IMAGE_VERSION=2.260
 IMAGE_NAME=rpi-jenkins
 CONTAINER_PORT=9402
 OWNER=paperinik
