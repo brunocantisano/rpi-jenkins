@@ -6,7 +6,7 @@ This Docker container implements a Jenkins on Raspberry pi.
 Only tested on Raspberry Pi 4
 
  * Raspbian base image: [resin/rpi-raspbian](https://hub.docker.com/r/resin/rpi-raspbian/)
- * Jenkins 2.248
+ * Jenkins 2.260
  
 ### Installation from [Docker registry hub](https://registry.hub.docker.com/u/paperinik/rpi-jenkins/).
 
