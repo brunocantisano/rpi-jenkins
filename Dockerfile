@@ -3,7 +3,7 @@
 #
  
 # Pull base image.
-FROM paperinik/rpi-java8:latest
+FROM paperinik/rpi-java:8
 
 LABEL version latest
 LABEL description Jenkins Container
