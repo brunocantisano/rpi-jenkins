@@ -3,7 +3,7 @@
 #
  
 # Pull base image.
-FROM paperinik/rpi-java:8
+FROM balenalib/raspberrypi3-debian-openjdk:11
 
 LABEL version latest
 LABEL description Jenkins Container
