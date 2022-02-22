@@ -1,5 +1,7 @@
 # Jenkins
 
+![rpi-jenkins](https://img.shields.io/docker/pulls/paperinik/rpi-jenkins)
+
 ![docker_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/files/docker.png)![docker_jenkins_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/files/logo-jenkins.png)![docker_paperinik_logo](https://raw.githubusercontent.com/brunocantisano/rpi-jenkins/master/files/docker_paperinik_120x120.png)
 
 This Docker container implements a Jenkins on Raspberry pi.
