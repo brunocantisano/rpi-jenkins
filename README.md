@@ -7,8 +7,8 @@
 This Docker container implements a Jenkins on Raspberry pi.
 Only tested on Raspberry Pi 4
 
- * Raspbian base image: [resin/rpi-raspbian](https://hub.docker.com/r/resin/rpi-raspbian/)
- * Jenkins 2.248
+ * Raspbian base image: [balenalib/aio-3288c-openjdk:11-buster-build](https://hub.docker.com/layers/balenalib/aio-3288c-openjdk/11-buster-build/)
+ * Jenkins 2.319.3
  
 ### Installation from [Docker registry hub](https://registry.hub.docker.com/u/paperinik/rpi-jenkins/).
 
@@ -37,21 +37,25 @@ make build
 ```
 
 2) Create a volume:
+
 ```bash
 make volume
 ```
 
 3) Start jenkins container:
+
 ```bash
 make run
 ```
 
 4) Change url to download plugins:
+
 ``bash
 make plugins
 ```
 
 5) Discover the admin password:
+
 ```bash
 make key
 ```

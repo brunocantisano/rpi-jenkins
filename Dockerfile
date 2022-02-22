@@ -3,12 +3,12 @@
 #
  
 # Pull base image.
-FROM balenalib/raspberrypi3-debian-openjdk:11
+FROM balenalib/aio-3288c-openjdk:11-buster-build
 
 LABEL version latest
 LABEL description Jenkins Container
 
-ENV VERSION 2.248
+ARG VERSION
 
 RUN apt-get clean && apt-get update \
     && apt-get install -y wget \

@@ -1,6 +1,6 @@
 .PHONY: default build remove rebuild save load tag push publish pull run-first plugins key copy stop run
 
-DOCKER_IMAGE_VERSION=2.248
+DOCKER_IMAGE_VERSION=2.319.3
 IMAGE_NAME=rpi-jenkins
 CONTAINER_PORT=9402
 OWNER=paperinik
@@ -24,7 +24,7 @@ default:
 	build
 
 build:
-	docker build -t $(DOCKER_IMAGE_TAGNAME) .
+	docker build -t $(DOCKER_IMAGE_TAGNAME) --build-arg VERSION=$(DOCKER_IMAGE_VERSION) .
 
 remove:
 	docker rmi -f $(DOCKER_IMAGE_TAGNAME)
