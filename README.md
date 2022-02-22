@@ -50,7 +50,7 @@ make run
 
 4) Change url to download plugins:
 
-``bash
+```bash
 make plugins
 ```
 
